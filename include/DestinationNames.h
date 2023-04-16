@@ -1,15 +1,15 @@
 #pragma once
-#include "ValuesToNames.h"
+#include "BaseNames.h"
 
 
-
-template <class T> class DestinationNames // : public ValuesToNames {
-{
+class DestinationNames : public BaseNames{
 private:
 
 public:
-	//std::string Convert(int) override {}
+	DestinationNames();
+
 };
 
-
-//
+DestinationNames::DestinationNames(){
+	m_Names = std::vector<std::string>({ "Rome", "Prague", "New York", "India", "Thailand" });
+}
