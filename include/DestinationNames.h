@@ -7,7 +7,6 @@ private:
 
 public:
 	DestinationNames();
-
 };
 
 DestinationNames::DestinationNames(){

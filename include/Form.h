@@ -1,6 +1,7 @@
 #pragma once
 #include "Field.h"
 #include "BaseComparison.h"
+#include <vector>
 
 class Form {
 private:
@@ -11,5 +12,6 @@ public:
 	void addField(BaseField*);
 	void addValidator(BaseComparison*);
 	void fillForm();
+	bool validateForm();
 };
 

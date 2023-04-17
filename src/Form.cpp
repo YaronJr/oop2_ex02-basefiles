@@ -1,4 +1,5 @@
 #include "Form.h"
+#include <vector>
 
 
 
@@ -15,4 +16,14 @@ void Form::fillForm() {
 	for (auto & field : m_FieldsVector) {
 		field->readData();
 	}
+}
+
+bool Form::validateForm()
+{
+	for (auto& obj : m_FieldsVector){
+		if (!obj->getIsGood()) {
+			return false;
+		}
+	}
+	return true;
 }
