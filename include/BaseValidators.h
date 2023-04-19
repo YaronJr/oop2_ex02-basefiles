@@ -6,7 +6,8 @@ template <class T>
 class BaseValidators {
 public:
 	BaseValidators() = default;
-	bool virtual IsValid(T obj) = 0;
+	virtual bool IsValid(T obj) = 0;
+	std::string virtual PrintError() = 0;
 private:
 
 };

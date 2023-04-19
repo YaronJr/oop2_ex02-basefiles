@@ -11,7 +11,7 @@ public:
 	ValuesToNames() = default;
 	std::string valuesAndNames();
 	void Set(int temp) { m_data = temp; }
-	void Get() { return m_data; }
+	int Get() const;
 private:
 	int m_data;
 	T m_myT;
@@ -22,12 +22,17 @@ std::string ValuesToNames<T>::valuesAndNames() {
 	return m_myT.GetValues();
 }
 
+template<class T>
+inline int ValuesToNames<T>::Get() const
+{
+	return m_data;
+}
+
 
 template <class T>
-std::istream& operator>>(std::istream& is, ValuesToNames <T> obj) {
+std::istream& operator>>(std::istream& is, ValuesToNames <T> &obj) {
 	int value;
 	is >> value;
-
 	obj.Set(value);
 	return is;
 }

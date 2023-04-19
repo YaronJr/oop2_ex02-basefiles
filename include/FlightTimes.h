@@ -6,6 +6,7 @@ private:
 
 public:
 	FlightTimes();
+
 };
 
 

@@ -140,14 +140,14 @@ int main()
 		// Displays all form fields with value (and error if not valid)
 		clearScreen();
 		std::cout << getErrorMessage();
-		//std::cout << myForm << '\n';
+		std::cout << myForm << '\n';
 
 		myForm.fillForm();
 	}
 
-	//clearScreen();
-	//std::cout << getGoodbyeMessage();
-	//std::cout << myForm << '\n';
+	clearScreen();
+	std::cout << getGoodbyeMessage();
+	std::cout << myForm << '\n';
 	return 0;
 }
 
