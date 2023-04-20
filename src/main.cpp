@@ -138,14 +138,14 @@ int main()
 	for (auto formIsCorrect = myForm.validateForm(); !formIsCorrect; formIsCorrect = myForm.validateForm())
 	{
 		// Displays all form fields with value (and error if not valid)
-		clearScreen();
+		//clearScreen();
 		std::cout << getErrorMessage();
 		std::cout << myForm << '\n';
 
 		myForm.fillForm();
 	}
 
-	clearScreen();
+	//clearScreen();
 	std::cout << getGoodbyeMessage();
 	std::cout << myForm << '\n';
 	return 0;

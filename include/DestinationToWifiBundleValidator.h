@@ -8,11 +8,8 @@ class DestinationToWifiBundleValidator : public BaseComparison {
 public:
 	bool PrintValidationError(std::ostream& os) override;
 	bool Validate() override;
-	void setLegalFields() override { m_Destination->setGood(); m_Authenticator->setGood(); }
-	DestinationToWifiBundleValidator(T* ptr1, U* ptr2){
-		m_Destination = ptr1;
-		m_Authenticator = ptr2;
-	};
+	void setLegalFields() override { m_Destination->setGood(ValidOrNot); m_Authenticator->setGood(ValidOrNot); }
+	DestinationToWifiBundleValidator(T* ptr1, U* ptr2) : m_Destination(ptr1), m_Authenticator(ptr2), ValidOrNot(false) {}
 
 private:
 	bool ValidOrNot;
@@ -24,7 +21,7 @@ private:
 template<class T, class U>
 inline bool DestinationToWifiBundleValidator<T, U>::PrintValidationError(std::ostream& os){
 	if (!ValidOrNot) {
-		os << "Destination and flight time don't match" << std::endl;
+		os << "Destination and Wife Bundle don't match" << std::endl;
 		return false;
 	}
 	return true;
@@ -34,44 +31,34 @@ template<class T, class U>
 inline bool DestinationToWifiBundleValidator<T, U>::Validate(){
 	auto dest = m_Destination->get().Get();
 	auto WifiBundle = m_Authenticator->get().Get();
-	switch (dest)
-	{
+	ValidOrNot = true;
+	switch (dest){
+
 	case ROME:
-		ValidOrNot = true;
-		return true;
+		break;
 
 	case PRAGUE:
-		ValidOrNot = true;
-		return true;
+		break;
 
 	case NEWYORK:
-		if (WifiBundle == 1){
-			setLegalFields();
+		if (WifiBundle == 2)
 			ValidOrNot = false;
-			return false;
-		}
-		ValidOrNot = true;
-		return true;
+		break;
 
 	case THAILAND:
-		if (WifiBundle == 3){
-			setLegalFields();
+		if (WifiBundle == 3)
 			ValidOrNot = false;
-			return false;
-		}
-		ValidOrNot = true;
-		return true;
+		break;
 
 	case INDIA:
-		if (WifiBundle == 3){
-			setLegalFields();
+		if (WifiBundle == 3)
 			ValidOrNot = false;
-			return false;
-		}
-		ValidOrNot = true;
-		return true;
+		break;
 
 	default:
 		break;
 	}
+	setLegalFields();
+	std::cout << "valid or not in wifi to destination is:     " << ValidOrNot << std::endl;
+	return ValidOrNot;
 }

@@ -4,10 +4,6 @@
 #include <iostream>
 
 
-
-
-
-
 class BaseNames {
 public:
 	BaseNames() = default;

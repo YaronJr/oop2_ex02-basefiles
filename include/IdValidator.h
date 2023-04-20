@@ -6,7 +6,7 @@ using namespace std;
 
 class IdValidator : public BaseValidators<uint32_t> {
 public:
-
+    
     std::string PrintError();
     bool checkLuhn(const uint32_t& fieldToValidate) const;
     IdValidator() = default;

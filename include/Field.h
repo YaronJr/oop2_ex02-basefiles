@@ -14,12 +14,12 @@ private:
 	std::string m_Question;
 	BaseValidators<T> * m_ValidatorPtr;
 	T m_Data;
-	bool m_isGood;
+	bool m_isGood, m_ErrorMessage;
 
 public:
-	void setGood() override { m_isGood = false; }
+	void setGood(bool ValidOrNot) override { m_isGood = ValidOrNot; }
 	void printValue(std::ostream&) override;
-	bool getIsGood() override { return m_isGood; } ;
+	bool getIsGood() override { return m_isGood; };
 	void readData() override;
 
 	T get() { return m_Data; }
@@ -33,7 +33,8 @@ inline void Field<T>::printValue(std::ostream& os){
 	os << m_Question << " = " << m_Data;
 	if (!m_isGood) {
 		os << "		";
-		os << m_ValidatorPtr->PrintError();
+		if (!m_ErrorMessage)
+			os << m_ValidatorPtr->PrintError();
 	}
 	os << std::endl;
 
@@ -46,5 +47,6 @@ void Field<T>::readData() {
 		std::cout << m_Question << std::endl;
 		std::cin >> m_Data;
 	}
-	m_isGood = m_ValidatorPtr->IsValid(m_Data);
+	m_isGood = m_ErrorMessage =  m_ValidatorPtr->IsValid(m_Data);
+	
 }

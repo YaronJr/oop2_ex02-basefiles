@@ -1,7 +1,7 @@
 #pragma once
 
 
-enum DESTENATIONS {ROME, PRAGUE, NEWYORK, THAILAND, INDIA};
+enum DESTENATIONS {ROME, PRAGUE, NEWYORK, INDIA, THAILAND};
 
 class BaseComparison {
 public:
